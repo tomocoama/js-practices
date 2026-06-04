@@ -1,5 +1,16 @@
-const year = Number(process.argv[2]);
-const month = Number(process.argv[3]);
+const today = new Date();
+let year = today.getFullYear();
+let month = today.getMonth() + 1;
+
+const yearIndex = process.argv.indexOf("-y");
+if (yearIndex !== -1) {
+  year = Number(process.argv[yearIndex + 1]);
+}
+
+const monthIndex = process.argv.indexOf("-m");
+if (monthIndex !== -1) {
+  month = Number(process.argv[monthIndex + 1]);
+}
 
 const firstDay = new Date(year, month - 1, 1);
 const lastDay = new Date(year, month, 0);
