@@ -21,9 +21,17 @@ for (let i = 0; i < firstDay.getDay(); i++) {
   dates += " ".repeat(3);
 }
 for (let date = 1; date <= lastDay.getDate(); date++) {
-  dates += `${String(date).padStart(2, " ")} `;
-  if ((firstDay.getDay() + date) % 7 === 0) {
+  const dayOfWeek = (firstDay.getDay() + date - 1) % 7;
+  const isSaturday = dayOfWeek === 6;
+
+  dates += String(date).padStart(2, " ");
+
+  if (date === lastDay.getDate()) {
+    continue;
+  } else if (isSaturday) {
     dates += "\n";
+  } else {
+    dates += " ";
   }
 }
 
