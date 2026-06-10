@@ -26,17 +26,11 @@ for (let date = 1; date <= lastDay.getDate(); date++) {
 
   dates += String(date).padStart(2, " ");
 
-  if (date === lastDay.getDate()) {
-    continue;
-  } else if (isSaturday) {
-    dates += "\n";
-  } else {
-    dates += " ";
+  if (date !== lastDay.getDate()) {
+    dates += isSaturday ? "\n" : " ";
   }
 }
 
-const header = `${month}月 ${year}`;
-
-console.log(`      ${header}`);
+console.log(`      ${month}月 ${year}`);
 console.log("日 月 火 水 木 金 土");
 console.log(dates);
